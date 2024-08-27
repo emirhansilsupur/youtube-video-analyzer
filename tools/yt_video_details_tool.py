@@ -7,6 +7,7 @@ from datetime import datetime
 
 
 class VideoDetails(BaseModel):
+
     title: str
     view_count: int
     like_count: int

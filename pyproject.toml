@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "youtube-video-analyzer"
+version = "0.1.0"
+description = "A multi-agent-based project using crewai for YouTube video analysis"
+authors = ["Emirhan Silsupur <sr.emirhn@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11.9,<3.13"
+crewai = "^0.51.1"
+langchain-groq = "^0.1.9"
+streamlit = "^1.37.1"
+pydantic = "^2.8.2"
+crewai-tools = "^0.4.26"
+fpdf = "^1.7.2"
+requests = "^2.32.3"
+
+[tool.pyright]
+useLibraryCodeForTypes = true
+exclude = [".cache"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

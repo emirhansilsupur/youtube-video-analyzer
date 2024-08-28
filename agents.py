@@ -23,3 +23,17 @@ class YoutubeAnalysisAgents:
             tools=[yt_video_details_tool, yt_video_analysis_tool],
             llm=self.llm,
         )
+
+    def comment_analysis_agent(self, yt_commend_thread_tool):
+        return Agent(
+            role="Audience Engagement Analyst",
+            goal="""Extract, analyze, and interpret detailed information from a YouTube video to deliver actionable insights 
+                on its performance, audience reach, and engagement patterns, aimed at enhancing content strategy.""",
+            backstory="""A seasoned video insights specialist with an exceptional track record in dissecting video metrics. 
+                     You have a deep understanding of what makes content resonate with audiences and how to leverage data 
+                     to optimize video performance for creators and marketers.""",
+            verbose=True,
+            allow_delegation=False,
+            tools=[yt_commend_thread_tool],
+            llm=self.llm,
+        )

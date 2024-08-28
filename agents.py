@@ -37,3 +37,17 @@ class YoutubeAnalysisAgents:
             tools=[yt_commend_thread_tool],
             llm=self.llm,
         )
+
+    def summary_agent(self, text_to_pdf_tool):
+        return Agent(
+            role="YouTube Content Strategist",
+            goal="""Synthesize critical information from video metrics and audience feedback to craft a comprehensive, 
+                data-driven summary that guides content creators in refining their strategy and maximizing the impact of their videos.""",
+            backstory="""As the top YouTube content strategist, you specialize in blending data from various sources 
+                     into clear, actionable insights. Your expertise helps content creators make informed decisions 
+                     that elevate their content's reach and effectiveness.""",
+            verbose=True,
+            allow_delegation=False,
+            tools=[text_to_pdf_tool],
+            llm=self.llm,
+        )

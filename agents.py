@@ -4,12 +4,29 @@ import os
 
 
 class YoutubeAnalysisAgents:
-    def __init__(self):
-        self.llm = ChatGroq(
-            api_key=os.getenv("GROQ_API_KEY"),
-            model="mixtral-8x7b-32768",
-            temperature=0.1,
-        )
+    def __init__(self, llm_choice="llama3-70b"):
+
+        self.llm = self._get_llm(llm_choice)
+
+    def _get_llm(self, llm_choice):
+        if llm_choice == "llama3-70b":
+            return ChatGroq(
+                api_key=os.getenv("GROQ_API_KEY"),
+                model="llama3-70b-8192",
+            )
+        elif llm_choice == "llama-3.1-70b":
+            return ChatGroq(
+                api_key=os.getenv("GROQ_API_KEY"),
+                model="llama-3.1-70b-versatile",
+            )
+
+        elif llm_choice == "mixtral-8x7b":
+            return ChatGroq(
+                api_key=os.getenv("GROQ_API_KEY"),
+                model="mixtral-8x7b-32768",
+            )
+        else:
+            raise ValueError(f"Unsupported LLM choice: {llm_choice}")
 
     def video_details_agent(self, yt_video_details_tool, yt_video_analysis_tool):
         return Agent(
@@ -50,4 +67,5 @@ class YoutubeAnalysisAgents:
             allow_delegation=False,
             tools=[text_to_pdf_tool],
             llm=self.llm,
+            max_iter=50,
         )

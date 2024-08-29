@@ -11,14 +11,12 @@ import re
 
 
 class YoutubeAnalysisCrew:
-    def __init__(
-        self,
-        video_url,
-    ):
+    def __init__(self, video_url, llm_choice="llama3-70b"):
         self.video_url = video_url
         self.video_id = self.extract_video_id(video_url)
         if self.video_id is None:
             raise ValueError("Invalid YouTube URL provided.")
+        self.llm_choice = llm_choice
 
     def extract_video_id(self, url: str) -> str:
         # Regular expression to match YouTube video ID from various URL formats
@@ -29,7 +27,7 @@ class YoutubeAnalysisCrew:
             raise ValueError("Invalid YouTube URL. Please provide a valid URL.")
 
     def run(self):
-        agents = YoutubeAnalysisAgents()
+        agents = YoutubeAnalysisAgents(llm_choice=self.llm_choice)
         tasks = YoutubeAnalysisTasks()
         # tools
         youtube_video_details_tool = YoutubeVideoDetailsTool()
@@ -40,7 +38,7 @@ class YoutubeAnalysisCrew:
         # Define agents
         video_details_agent = agents.video_details_agent(
             yt_video_details_tool=youtube_video_details_tool,
-            video_analysis_tool=video_analysis_tool,
+            yt_video_analysis_tool=video_analysis_tool,
         )
         comment_analysis_agent = agents.comment_analysis_agent(
             yt_commend_thread_tool=youtube_commend_thread_tool

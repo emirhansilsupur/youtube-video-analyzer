@@ -39,11 +39,11 @@ class YoutubeAnalysisCrew:
 
         # Define agents
         video_details_agent = agents.video_details_agent(
-            youtube_video_details_tool=youtube_video_details_tool,
+            yt_video_details_tool=youtube_video_details_tool,
             video_analysis_tool=video_analysis_tool,
         )
         comment_analysis_agent = agents.comment_analysis_agent(
-            youtube_commend_thread_tool=youtube_commend_thread_tool
+            yt_commend_thread_tool=youtube_commend_thread_tool
         )
         summary_agent = agents.summary_agent(text_to_pdf_tool=text_to_pdf_tool)
 

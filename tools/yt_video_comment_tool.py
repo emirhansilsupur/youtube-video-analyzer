@@ -15,7 +15,7 @@ class YoutubeCommentThreadsToolInput(BaseModel):
     """Input for YoutubeCommentThreadsTool."""
 
     video_id: str = Field(..., description="The ID of the YouTube video.")
-    max_results: int = Field(10, description="The maximum number of results to return.")
+    max_results: int = Field(30, description="The maximum number of results to return.")
 
 
 class YoutubeCommentThreadsTool(BaseTool):
@@ -23,7 +23,7 @@ class YoutubeCommentThreadsTool(BaseTool):
     description: str = "Retrieves comment threads for a specific YouTube video."
     args_schema: Type[BaseModel] = YoutubeCommentThreadsToolInput
 
-    def _run(self, video_id: str, max_results: int = 10) -> List[CommentDetails]:
+    def _run(self, video_id: str, max_results: int = 30) -> List[CommentDetails]:
         try:
             api_key = os.getenv("YOUTUBE_API_KEY")
             url = "https://www.googleapis.com/youtube/v3/commentThreads"
@@ -54,7 +54,7 @@ class YoutubeCommentThreadsTool(BaseTool):
             sorted_comments = sorted(
                 comment_threads, key=lambda x: x.like_count, reverse=True
             )
-            top_comments = sorted_comments[:3]
+            top_comments = sorted_comments[:10]
 
             return top_comments
         except Exception as e:

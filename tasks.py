@@ -33,6 +33,7 @@ class YoutubeAnalysisTasks:
                 """
             ),
             agent=agent,
+            async_execution=True,
             expected_output="A detailed report with video details,and metrics.",
         )
 
@@ -63,6 +64,7 @@ class YoutubeAnalysisTasks:
             """
             ),
             agent=agent,
+            async_execution=True,
             expected_output="A comprehensive report including a list of CommentThreadDetails objects and a summarized analysis of viewer sentiment and key themes.",
         )
 
@@ -78,7 +80,8 @@ class YoutubeAnalysisTasks:
                 Combine the video analysis, comment summary, and video details into a final report.
                 Ensure all sections from the example report are included and properly filled out.
                 Include any additional insights or recommendations based on the combined data.
-                Get the current date for the report.
+                Get the current date for the report. 
+                Do not deviate from the following Example Report format.
                 After creating the report, use the `text_to_pdf_tool` to convert the report into a PDF format.
 
                 Example Report:
@@ -90,10 +93,10 @@ class YoutubeAnalysisTasks:
                 ### 1. Video Performance Metrics
 
                 **Video Title:** Rick Astley - Never Gonna Give You Up (Official Music Video)  
-                **View Count:** 1234567  
-                **Like Count:** 45678  
-                **Comment Count:** 2345  
-                **Channel Subscriber Count:** 1234000  
+                **View Count:** 1,234,567  
+                **Like Count:** 45,678  
+                **Comment Count:** 2,345  
+                **Channel Subscriber Count:** 1,234,000  
                 **Video Description:** Rick Astley's official music video for “Never Gonna Give You Up”  
                 **Video Tags:** [Rick Astley, Never Gonna Give You Up, Music Video, 80s Music]  
                 **Upload Date:** 2009-10-25  

@@ -1,32 +1,32 @@
 from crewai import Agent
 from langchain_groq import ChatGroq
 import os
+from dotenv import load_dotenv
+from enum import Enum
+
+# Load environment variables
+load_dotenv()
+
+
+class LLMChoice(Enum):
+    LLAMA3_70B = "llama3-70b-8192"
+    LLAMA_3_1_70B = "llama-3.1-70b-versatile"
+    MIXTRAL_8X7B = "mixtral-8x7b-32768"
 
 
 class YoutubeAnalysisAgents:
-    def __init__(self, llm_choice="llama3-70b"):
-
-        self.llm = self._get_llm(llm_choice)
+    def __init__(self, llm_choice=LLMChoice.LLAMA3_70B):
+        self.llm, self.max_rpm = self._get_llm(llm_choice)
 
     def _get_llm(self, llm_choice):
-        if llm_choice == "llama3-70b":
-            return ChatGroq(
-                api_key=os.getenv("GROQ_API_KEY"),
-                model="llama3-70b-8192",
-            )
-        elif llm_choice == "llama-3.1-70b":
-            return ChatGroq(
-                api_key=os.getenv("GROQ_API_KEY"),
-                model="llama-3.1-70b-versatile",
-            )
+        llm_configs = {
+            LLMChoice.LLAMA3_70B: ("llama3-70b-8192", 30),
+            LLMChoice.LLAMA_3_1_70B: ("llama-3.1-70b-versatile", 100),
+            LLMChoice.MIXTRAL_8X7B: ("mixtral-8x7b-32768", 30),
+        }
 
-        elif llm_choice == "mixtral-8x7b":
-            return ChatGroq(
-                api_key=os.getenv("GROQ_API_KEY"),
-                model="mixtral-8x7b-32768",
-            )
-        else:
-            raise ValueError(f"Unsupported LLM choice: {llm_choice}")
+        model, max_rpm = llm_configs[llm_choice]
+        return ChatGroq(api_key=os.getenv("GROQ_API_KEY"), model=model), max_rpm
 
     def video_details_agent(self, yt_video_details_tool, yt_video_analysis_tool):
         return Agent(
@@ -39,6 +39,7 @@ class YoutubeAnalysisAgents:
             allow_delegation=False,
             tools=[yt_video_details_tool, yt_video_analysis_tool],
             llm=self.llm,
+            max_rpm=self.max_rpm,
         )
 
     def comment_analysis_agent(self, yt_commend_thread_tool):
@@ -53,6 +54,7 @@ class YoutubeAnalysisAgents:
             allow_delegation=False,
             tools=[yt_commend_thread_tool],
             llm=self.llm,
+            max_rpm=self.max_rpm,
         )
 
     def summary_agent(self, text_to_pdf_tool):
@@ -67,5 +69,6 @@ class YoutubeAnalysisAgents:
             allow_delegation=False,
             tools=[text_to_pdf_tool],
             llm=self.llm,
+            max_rpm=self.max_rpm,
             max_iter=50,
         )

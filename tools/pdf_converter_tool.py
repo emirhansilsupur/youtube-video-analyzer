@@ -29,9 +29,7 @@ class TextToPDFTool(BaseTool):
     ) -> str:
         try:
             # Ensure the directory for the output file exists
-            output_dir = os.path.dirname(output_file)
-            if not os.path.exists(output_dir):
-                os.makedirs(output_dir)
+            os.makedirs(os.path.dirname(output_file), exist_ok=True)
 
             def remove_special_characters(text):
                 normalized_text = unicodedata.normalize("NFKD", text)

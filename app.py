@@ -3,11 +3,13 @@ import glob
 import time
 import streamlit as st
 from crew import YoutubeAnalysisCrew
+from agents import LLMChoice
 
 
 def main():
-    st.set_page_config(page_title="YouTube Video Analysis", page_icon="📊")
+    st.set_page_config(page_title="VidStatsReport", page_icon=":clipboard:")
     st.title("YouTube Video Analysis")
+    st.divider()
 
     # Initialize session state variables if they don't exist
     if "result" not in st.session_state:
@@ -28,9 +30,10 @@ def main():
         st.video(video_url)
 
     # LLM model choice
-    llm_choice = st.selectbox(
-        "Choose LLM:", ["llama3-70b", "llama-3.1-70b", "mixtral-8x7b"]
+    llm_choice_name = st.selectbox(
+        "Choose LLM:", [choice.value for choice in LLMChoice]
     )
+    llm_choice = next(choice for choice in LLMChoice if choice.value == llm_choice_name)
 
     if st.button("Analyze Video"):
         if video_url:
@@ -40,6 +43,7 @@ def main():
                     start_time = time.time()
 
                     youtube_analysis_crew = YoutubeAnalysisCrew(video_url, llm_choice)
+
                     st.session_state.result = youtube_analysis_crew.run()
                     st.session_state.selected_model = llm_choice
 
@@ -63,6 +67,7 @@ def main():
             st.warning("Please enter a valid YouTube URL.")
 
     # Display the result if it exists in session state
+    st.divider()
     if st.session_state.result:
         st.markdown(st.session_state.result)
 

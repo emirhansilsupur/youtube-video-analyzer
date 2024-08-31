@@ -1,5 +1,5 @@
 from crewai import Crew
-from agents import YoutubeAnalysisAgents
+from agents import YoutubeAnalysisAgents, LLMChoice
 from tasks import YoutubeAnalysisTasks
 
 from tools.yt_video_details_tool import YoutubeVideoDetailsTool
@@ -11,7 +11,7 @@ import re
 
 
 class YoutubeAnalysisCrew:
-    def __init__(self, video_url, llm_choice="llama3-70b"):
+    def __init__(self, video_url, llm_choice=LLMChoice.LLAMA3_70B):
         self.video_url = video_url
         self.video_id = self.extract_video_id(video_url)
         if self.video_id is None:

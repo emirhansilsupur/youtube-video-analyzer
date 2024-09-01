@@ -6,9 +6,19 @@ from crew import YoutubeAnalysisCrew
 from agents import LLMChoice
 
 
+GITHUB_LINK = "https://github.com/emirhansilsupur/youtube-video-analyzer.git"
+LINKEDIN_LINK = "https://www.linkedin.com/in/emirhansilsupur/"
+
+
 def main():
-    st.set_page_config(page_title="VidStatsReport", page_icon=":clipboard:")
-    st.title("YouTube Video Analysis")
+    st.set_page_config(page_title="YouTube Video Inspector", page_icon=":red_circle:")
+    st.title(
+        ":clipboard: YouTube Video Inspector",
+    )
+    st.write(
+        """This app is a quick and easy tool for analyzing YouTube videos. 
+        Enter a video link to get detailed stats, analyze comments, and generate PDF reports."""
+    )
     st.divider()
 
     # Initialize session state variables if they don't exist
@@ -70,12 +80,13 @@ def main():
     st.divider()
     if st.session_state.result:
         st.markdown(st.session_state.result)
-
+        st.divider()
         # Show the time taken to generate the PDF
         if st.session_state.pdf_generation_time is not None:
             st.info(
                 f"PDF report generated in {st.session_state.pdf_generation_time:.2f} seconds.",
             )
+            st.warning("If the report is missing, try a different LLM.")
 
         # Offer PDF download
         if st.session_state.pdf_path:
@@ -97,6 +108,20 @@ def main():
             st.session_state.pdf_generation_time = None
             st.session_state.error_message = None
             st.experimental_rerun()
+
+    st.markdown(
+        f"""
+        <div style="display: flex; justify-content: flex-end;">
+            <a href="{GITHUB_LINK}" target="_blank" style="text-decoration: none;">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/github.png"/>
+            </a>
+            <a href="{LINKEDIN_LINK}" target="_blank" style="text-decoration: none; margin-left: 15px;">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/linkedin.png"/>
+            </a>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 if __name__ == "__main__":

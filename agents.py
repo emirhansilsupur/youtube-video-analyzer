@@ -9,19 +9,19 @@ load_dotenv()
 
 
 class LLMChoice(Enum):
-    LLAMA3_70B = "llama3-70b-8192"
     LLAMA_3_1_70B = "llama-3.1-70b-versatile"
+    LLAMA3_70B = "llama3-70b-8192"
     MIXTRAL_8X7B = "mixtral-8x7b-32768"
 
 
 class YoutubeAnalysisAgents:
-    def __init__(self, llm_choice=LLMChoice.LLAMA3_70B):
+    def __init__(self, llm_choice=LLMChoice.LLAMA_3_1_70B):
         self.llm, self.max_rpm = self._get_llm(llm_choice)
 
     def _get_llm(self, llm_choice):
         llm_configs = {
-            LLMChoice.LLAMA3_70B: ("llama3-70b-8192", 30),
             LLMChoice.LLAMA_3_1_70B: ("llama-3.1-70b-versatile", 100),
+            LLMChoice.LLAMA3_70B: ("llama3-70b-8192", 30),
             LLMChoice.MIXTRAL_8X7B: ("mixtral-8x7b-32768", 30),
         }
 

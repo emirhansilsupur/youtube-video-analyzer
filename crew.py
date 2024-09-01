@@ -11,7 +11,7 @@ import re
 
 
 class YoutubeAnalysisCrew:
-    def __init__(self, video_url, llm_choice=LLMChoice.LLAMA3_70B):
+    def __init__(self, video_url, llm_choice=LLMChoice.LLAMA_3_1_70B):
         self.video_url = video_url
         self.video_id = self.extract_video_id(video_url)
         if self.video_id is None:

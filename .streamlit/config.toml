@@ -15,6 +15,7 @@ crewai-tools = "^0.4.26"
 fpdf = "^1.7.2"
 requests = "^2.32.3"
 python-dotenv = "^1.0.1"
+sqlite3 ="^3.46.0"
 
 [tool.pyright]
 useLibraryCodeForTypes = true

@@ -6,11 +6,11 @@ authors = ["Emirhan Silsupur <sr.emirhn@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11.9,<3.13"
+python = ">=3.11.8,<=3.12"
 crewai = "^0.51.1"
 langchain-groq = "^0.1.9"
 streamlit = "^1.37.1"
-pydantic = "^2.8.2"
+pydantic = "^2.8.0"
 crewai-tools = "^0.4.26"
 fpdf = "^1.7.2"
 requests = "^2.32.3"

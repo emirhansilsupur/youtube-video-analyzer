@@ -51,10 +51,21 @@ def main():
                 with st.spinner("Analyzing video... This may take a few minutes."):
 
                     start_time = time.time()
+                    analysis_started = True
 
                     youtube_analysis_crew = YoutubeAnalysisCrew(video_url, llm_choice)
 
-                    st.session_state.result = youtube_analysis_crew.run()
+                    while analysis_started:
+                        elapsed_time = time.time() - start_time
+                        if elapsed_time > 120:
+                            st.warning(
+                                "The analysis is taking longer than expected. Please try a different LLM."
+                            )
+                            analysis_started = False
+
+                        st.session_state.result = youtube_analysis_crew.run()
+                        analysis_started = False
+
                     st.session_state.selected_model = llm_choice
 
                     # Get the most recent PDF file from the 'output' directory

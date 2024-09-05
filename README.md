@@ -68,7 +68,7 @@ docker run -p 8501:8501 -v $(pwd)/output:/app/output --env-file .env emirhnslspr
 2. Select an LLM model from the dropdown menu.
 3. Click "Analyze Video" to start the analysis process.
 4. The app will fetch video details, analyze comments, and generate a basic report.
-5. Once complete, you can view the analysis results and download the PDF report.
+5. Once complete, you can view the analysis results and download the [PDF report](Youtube_Video_Analysis_Report.pdf).
 
 ## License
 

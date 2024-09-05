@@ -4,7 +4,7 @@ YouTube Video Inspector is a multi-agent-based project that provides basic analy
 
 ## Workflow
 
-![](assets\Flowchart_yt.jpg)
+![](assets/Flowchart_yt.jpg)
 
 [Click for the interactive flowchart version.](https://miro.com/app/board/uXjVKjutOC8=/?share_link_id=151983055691)
 ## Features
@@ -62,7 +62,7 @@ docker run -p 8501:8501 -v $(pwd)/output:/app/output --env-file .env emirhnslspr
 ```
 
 ## How It Works
-![](assets\YouTubeVideoInspector.gif)
+![](assets/YouTubeVideoInspector.gif)
 
 1. Enter a YouTube video URL in the provided input field.
 2. Select an LLM model from the dropdown menu.

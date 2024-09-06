@@ -62,7 +62,11 @@ docker run -p 8501:8501 -v $(pwd)/output:/app/output --env-file .env emirhnslspr
 ```
 
 ## How It Works
-<video controls src="assets/youtube-video-inspector.mp4" title="Title"></video>
+<video controls src="assets/youtube-video-inspector.mp4"></video>
+
+
+https://github.com/user-attachments/assets/bb9aeb3c-1166-4b66-97ad-aa86bd3dcec3
+
 
 1. Enter a YouTube video URL in the provided input field.
 2. Select an LLM model from the dropdown menu.

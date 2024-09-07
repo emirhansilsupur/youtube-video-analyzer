@@ -2,11 +2,18 @@
 
 YouTube Video Inspector is a multi-agent-based project that provides basic analysis of YouTube videos. It fetches video statistics, analyzes comments, generates detailed reports, and converts them to PDF format.
 
-## Workflow
+<video controls src="assets/youtube-video-inspector.mp4"></video>
 
-![](assets/Flowchart_yt.jpg)
 
-[Click for the interactive flowchart version.](https://miro.com/app/board/uXjVKjutOC8=/?share_link_id=151983055691)
+https://github.com/user-attachments/assets/bb9aeb3c-1166-4b66-97ad-aa86bd3dcec3
+
+
+1. Enter a YouTube video URL in the provided input field.
+2. Select an LLM model from the dropdown menu.
+3. Click "Analyze Video" to start the analysis process.
+4. The app will fetch video details, analyze comments, and generate a basic report.
+5. Once complete, you can view the analysis results and download the [PDF report](output/Youtube_Video_Analysis_Report.pdf).
+
 ## Features
 
 - Fetch and analyze YouTube video metadata
@@ -60,15 +67,12 @@ YOUTUBE_API_KEY=your_youtube_api_key
 ```bash
 docker run -p 8501:8501 -v $(pwd)/output:/app/output --env-file .env emirhnslspr/youtube-video-analyzer:v0.1
 ```
+## Workflow
 
-## How It Works
-<video controls src="assets/youtube-video-inspector.mp4" title="Title"></video>
+![](assets/Flowchart_yt.jpg)
 
-1. Enter a YouTube video URL in the provided input field.
-2. Select an LLM model from the dropdown menu.
-3. Click "Analyze Video" to start the analysis process.
-4. The app will fetch video details, analyze comments, and generate a basic report.
-5. Once complete, you can view the analysis results and download the [PDF report](output/Youtube_Video_Analysis_Report.pdf).
+[Click for the interactive flowchart version.](https://miro.com/app/board/uXjVKjutOC8=/?share_link_id=151983055691)
+
 
 ## License
 

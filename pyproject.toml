@@ -16,6 +16,9 @@ fpdf = "^1.7.2"
 requests = "^2.32.3"
 python-dotenv = "^1.0.1"
 
+[sqlite]
+pysqlite3-binary = "^0.5.3.post1"
+
 [tool.pyright]
 useLibraryCodeForTypes = true
 exclude = [".cache"]

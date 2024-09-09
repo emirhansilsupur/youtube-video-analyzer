@@ -7,11 +7,11 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.11.8,<=3.12.6"
-crewai = "^0.51.1"
+crewai = "^0.51.0"
 langchain-groq = "^0.1.9"
 streamlit = "^1.37.1"
 pydantic = "^2.8.0"
-crewai-tools = "^0.4.26"
+crewai-tools = "^0.12.0"
 fpdf = "^1.7.2"
 requests = "^2.32.3"
 python-dotenv = "^1.0.1"

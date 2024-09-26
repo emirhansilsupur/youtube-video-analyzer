@@ -12,6 +12,7 @@ class LLMChoice(Enum):
     LLAMA_3_1_70B = "llama-3.1-70b-versatile"
     LLAMA3_70B = "llama3-70b-8192"
     MIXTRAL_8X7B = "mixtral-8x7b-32768"
+    LLAMA_3_2_90B = "llama-3.2-90b-text-preview"
 
 
 class YoutubeAnalysisAgents:
@@ -20,13 +21,14 @@ class YoutubeAnalysisAgents:
 
     def _get_llm(self, llm_choice):
         llm_configs = {
-            LLMChoice.LLAMA_3_1_70B: ("llama-3.1-70b-versatile", 100),
+            LLMChoice.LLAMA_3_1_70B: ("llama-3.1-70b-versatile", 30),
             LLMChoice.LLAMA3_70B: ("llama3-70b-8192", 30),
             LLMChoice.MIXTRAL_8X7B: ("mixtral-8x7b-32768", 30),
+            LLMChoice.LLAMA_3_2_90B: ("llama-3.2-90b-text-preview", 30),
         }
 
         model, max_rpm = llm_configs[llm_choice]
-        return ChatGroq(api_key=os.getenv("GROQ_API_KEY"), model=model), max_rpm
+        return ChatGroq(api_key=os.getenv("GROQ_API_KEY"), model=model), max_rpm  # type: ignore
 
     def video_details_agent(self, yt_video_details_tool, yt_video_analysis_tool):
         return Agent(

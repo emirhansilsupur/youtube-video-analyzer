@@ -13,7 +13,7 @@ You can try the YouTube Video Inspector application [here](https://huggingface.c
 
 
 1. Enter a YouTube video URL in the provided input field.
-2. Select an LLM model from the dropdown menu.
+2. Select an LLM from the dropdown menu.
 3. Click "Analyze Video" to start the analysis process.
 4. The app will fetch video details, analyze comments, and generate a basic report.
 5. Once complete, you can view the analysis results and download the [PDF report](output/Youtube_Video_Analysis_Report.pdf).
@@ -24,6 +24,11 @@ You can try the YouTube Video Inspector application [here](https://huggingface.c
 - Analyze video comments and viewer sentiment
 - Generate detailed reports on video performance and audience engagement
 - Convert reports to PDF format
+- **Supports multiple LLMs**:
+  - Llama 3.2 90B Text Preview
+  - Llama 3.1 70B Versatile
+  - Llama 3 70B 
+  - Mixtral 8x7B
 
 ## Installation
 #### Using Docker

@@ -7,6 +7,10 @@ YouTube Video Inspector is a multi-agent-based project that provides basic analy
 
 https://github.com/user-attachments/assets/bb9aeb3c-1166-4b66-97ad-aa86bd3dcec3
 
+## Demo
+
+You can try the YouTube Video Inspector application [here](https://huggingface.co/spaces/emirhansilsupur/Youtube-Video-Inspector).
+
 
 1. Enter a YouTube video URL in the provided input field.
 2. Select an LLM model from the dropdown menu.

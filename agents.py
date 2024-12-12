@@ -12,7 +12,6 @@ class LLMChoice(Enum):
     LLAMA_3_1_70B = "llama-3.1-70b-versatile"
     LLAMA3_70B = "llama3-70b-8192"
     MIXTRAL_8X7B = "mixtral-8x7b-32768"
-    LLAMA_3_2_90B = "llama-3.2-90b-text-preview"
 
 
 class YoutubeAnalysisAgents:
@@ -23,8 +22,7 @@ class YoutubeAnalysisAgents:
         llm_configs = {
             LLMChoice.LLAMA_3_1_70B: ("llama-3.1-70b-versatile", 30),
             LLMChoice.LLAMA3_70B: ("llama3-70b-8192", 30),
-            LLMChoice.MIXTRAL_8X7B: ("mixtral-8x7b-32768", 30),
-            LLMChoice.LLAMA_3_2_90B: ("llama-3.2-90b-text-preview", 30),
+            LLMChoice.MIXTRAL_8X7B: ("mixtral-8x7b-32768", 30)
         }
 
         model, max_rpm = llm_configs[llm_choice]

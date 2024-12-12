@@ -25,7 +25,6 @@ You can try the YouTube Video Inspector application [here](https://huggingface.c
 - Generate detailed reports on video performance and audience engagement
 - Convert reports to PDF format
 - **Supports multiple LLMs**:
-  - Llama 3.2 90B Text Preview
   - Llama 3.1 70B Versatile
   - Llama 3 70B 
   - Mixtral 8x7B

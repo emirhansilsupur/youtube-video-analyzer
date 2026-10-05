@@ -79,7 +79,6 @@ docker run -p 8501:8501 -v $(pwd)/output:/app/output --env-file .env emirhnslspr
 
 ![](assets/Flowchart_yt.jpg)
 
-[Click for the interactive flowchart version.](https://miro.com/app/board/uXjVKjutOC8=/?share_link_id=151983055691)
 
 
 ## License
